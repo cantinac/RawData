@@ -47,6 +47,13 @@ class RawDataTests: XCTestCase {
         XCTAssertTrue(data[0] == 5)
     }
     
+    func testNSData() {
+        let nsdata = "somedata".dataUsingEncoding(NSUTF8StringEncoding)!
+        let data: RawData = RawData(nsdata)
+        XCTAssertTrue(data[0] == 115) // 's'
+        XCTAssertTrue(data[7] == 97)  // 'a
+    }
+    
     func testCustomStringConvertible() {
         XCTAssertTrue(([1,2,3,4,5,6] as RawData).description == "<01020304 0506>")
         XCTAssertTrue(([1,2] as RawData).description == "<0102>")

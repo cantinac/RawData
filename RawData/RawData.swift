@@ -85,6 +85,10 @@ public final class RawData: CustomStringConvertible, ArrayLiteralConvertible, In
         ref.pointer.memory = value
     }
     
+    public convenience init(_ data: NSData) {
+        self.init(UnsafeMutableBufferPointer(start: UnsafeMutablePointer(data.bytes), count: data.length))
+    }
+    
     deinit {
         ref.dealloc()
     }
