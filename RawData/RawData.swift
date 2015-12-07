@@ -39,6 +39,10 @@ public final class RawData: CustomStringConvertible, ArrayLiteralConvertible, In
     
     private var ref:Pointer<Element>
     
+    public var memoryReference: UnsafeMutablePointer<Element> {
+        return self.ref.pointer
+    }
+    
     public var description: String {
         var hex = self.hex
         
