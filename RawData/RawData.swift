@@ -94,6 +94,12 @@ public final class RawData: CustomStringConvertible, ArrayLiteralConvertible, In
     }
 }
 
+extension NSData {
+    public convenience init(rawdata: RawData) {
+        self.init(bytes: rawdata.ref.pointer, length: rawdata.count)
+    }
+}
+
 extension RawData: Indexable {
     public typealias Index = Int
     
